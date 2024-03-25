@@ -5,15 +5,15 @@ import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 
 import com.habitvault.dto.AccountDTO;
-import com.habitvault.dto.TransactionDTO;
 import com.habitvault.entity.Account;
 import com.habitvault.entity.AccountType;
 import com.habitvault.entity.Customer;
+import com.habitvault.entity.Transaction;
 import com.habitvault.exception.CustomerNotFoundException;
 import com.habitvault.repository.AccountRepository;
 import com.habitvault.repository.CustomerRepository;
+import com.habitvault.repository.TransactionRepository;
 
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,6 +25,9 @@ public class CustomerServiceImpl implements CustomerService {
 	
 	@Autowired
 	CustomerRepository customerRepository;
+	
+	@Autowired
+	TransactionRepository transactionRepository;
 
     @Override
     public Optional<Account> getAccountDetails(Long customerId) {
@@ -34,8 +37,6 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public void deposit(Long customerId, Double amount) {
-        // Implement logic to perform account deposit
-    	Optional<Customer> fetchedCustomer = customerRepository.findById(customerId);
     }
 
     @Override
@@ -49,9 +50,9 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public List<TransactionDTO> getTransactionHistory(Long customerId) {
+    public List<Transaction> getTransactionHistory(Long customerId) {
         // Implement logic to retrieve transaction history for the customer
-        return null;
+        return transactionRepository.findAll();
     }
 
     @Override
@@ -60,7 +61,8 @@ public class CustomerServiceImpl implements CustomerService {
         return null;
     }
 
-    @Override
+    @SuppressWarnings("deprecation")
+	@Override
 	public Customer getCustomerById(Long customerId) {
 		return customerRepository.getById(customerId);
 	}

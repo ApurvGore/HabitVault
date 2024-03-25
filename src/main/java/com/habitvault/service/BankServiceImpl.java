@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 
-import com.habitvault.dto.TransactionDTO;
 import com.habitvault.entity.Account;
 import com.habitvault.entity.Customer;
 import com.habitvault.entity.Transaction;
@@ -15,7 +14,6 @@ import com.habitvault.repository.AccountRepository;
 import com.habitvault.repository.CustomerRepository;
 import com.habitvault.repository.TransactionRepository;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;

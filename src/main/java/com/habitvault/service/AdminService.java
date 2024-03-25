@@ -5,10 +5,8 @@ import java.util.List;
 import com.habitvault.dto.BankManagerDTO;
 import com.habitvault.entity.Account;
 import com.habitvault.entity.Bank;
-import com.habitvault.entity.BankManager;
 import com.habitvault.entity.Customer;
 import com.habitvault.exception.BankNotFoundException;
-import com.habitvault.exception.ResourceNotFoundException;
 
 public interface AdminService {
     // Add other method declarations as needed

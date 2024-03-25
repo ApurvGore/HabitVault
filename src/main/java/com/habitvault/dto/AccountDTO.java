@@ -1,7 +1,5 @@
 package com.habitvault.dto;
 
-import com.habitvault.entity.AccountType;
-
 public class AccountDTO {
 
     private Long accountId;

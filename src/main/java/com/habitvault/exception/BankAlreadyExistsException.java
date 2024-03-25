@@ -2,6 +2,11 @@ package com.habitvault.exception;
 
 public class BankAlreadyExistsException extends RuntimeException {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public BankAlreadyExistsException() {
 		super();
 		// TODO Auto-generated constructor stub

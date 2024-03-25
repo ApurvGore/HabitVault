@@ -3,11 +3,10 @@ package com.habitvault.service;
 import org.springframework.core.io.Resource;
 
 import com.habitvault.dto.AccountDTO;
-import com.habitvault.dto.TransactionDTO;
 import com.habitvault.entity.Account;
 import com.habitvault.entity.Customer;
+import com.habitvault.entity.Transaction;
 
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,7 +20,7 @@ public interface CustomerService {
 
     void transfer(Long senderCustomerId, Long receiverCustomerId, Double amount);
 
-    List<TransactionDTO> getTransactionHistory(Long customerId);
+    List<Transaction> getTransactionHistory(Long customerId);
 
     Resource downloadAccountStatement(Long customerId);
 

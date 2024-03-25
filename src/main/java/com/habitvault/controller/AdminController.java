@@ -11,7 +11,6 @@ import com.habitvault.dto.BankManagerDTO;
 import com.habitvault.entity.Account;
 import com.habitvault.entity.Admin;
 import com.habitvault.entity.Bank;
-import com.habitvault.entity.BankManager;
 import com.habitvault.entity.Customer;
 import com.habitvault.exception.BankNotFoundException;
 import com.habitvault.service.AdminServiceImpl;
@@ -62,24 +61,32 @@ public class AdminController {
         return adminService.getAllBankManagers();
     }
 
+    
     // Endpoints for viewing customers across banks and managing customer details
-    // Get all customers 
+    // Get all customers - tested -> working
     @GetMapping("/customers")
     public List<Customer> getAllCustomers() {
         return adminService.getAllCustomers();
     }
+    
 
-    // Get customer details by customerId 
+
+    // Get customer details by customerId - tested -> working  
     @GetMapping("/customers/{customerId}")
     public Customer getCustomerDetails(@PathVariable Long customerId) {
         return adminService.getCustomerDetails(customerId);
     }
+    
 
-    // Get customer accounts by customerId
+
+    // Get customer accounts by customerId - tested -> working  
     @GetMapping("/customers/{customerId}/accounts")
     public List<Account> getCustomerAccounts(@PathVariable Long customerId) {
         return adminService.getCustomerAccounts(customerId);
     }
+    
+    // DONE TILL HERE
+
 
     // Endpoint for downloading bank statements
 //    @GetMapping("/bankStatements/{customerId}")

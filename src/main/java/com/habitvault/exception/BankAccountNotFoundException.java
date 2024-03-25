@@ -2,6 +2,11 @@ package com.habitvault.exception;
 
 public class BankAccountNotFoundException extends RuntimeException {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public BankAccountNotFoundException() {
 		super();
 		// TODO Auto-generated constructor stub

@@ -85,8 +85,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.habitvault.dto.AccountDTO;
-import com.habitvault.dto.TransactionDTO;
 import com.habitvault.entity.Account;
+import com.habitvault.entity.Transaction;
 import com.habitvault.service.CustomerServiceImpl;
 
 @RestController
@@ -96,15 +96,15 @@ public class CustomerController {
     @Autowired
     private CustomerServiceImpl customerService;
 
-    // Endpoint for viewing own account details
-    @GetMapping("/accountDetails")
+    // Endpoint for viewing own account details- tested -> working properly
+    @GetMapping("/accountDetails") 
     public Optional<Account> getAccountDetails() {
         // Assume customer is logged in and their ID is retrieved from authentication
         Long customerId = 1L; // Example customer ID, replace with actual logged-in customer ID
         return customerService.getAccountDetails(customerId);
     }
     
-    // Endpoint for adding account details - tested -> working properly; but enum value stored as a digit in the database
+    // Endpoint for adding account details - tested -> working properly
     @PostMapping("/addAccount")
     public ResponseEntity<String> addAccount(@RequestBody AccountDTO accountDTO) {
     	
@@ -120,9 +120,10 @@ public class CustomerController {
         return ResponseEntity.status(HttpStatus.CREATED).body("Account added successfully for customer " + accountDTO.getCustomerName());
 //        }
     }
+    
 
     // Endpoints for performing account transactions
-    // Perform account deposit
+    // Perform account deposit - tested -> working properly
     @PostMapping("/deposit")
     public void deposit(@RequestParam Double amount) {
         // Assume customer is logged in and their ID is retrieved from authentication
@@ -130,7 +131,7 @@ public class CustomerController {
         customerService.deposit(customerId, amount);
     }
 
-    // Perform account withdrawal
+    // Perform account withdrawal - tested -> working properly
     @PostMapping("/withdraw")
     public void withdraw(@RequestParam Double amount) {
         // Assume customer is logged in and their ID is retrieved from authentication
@@ -138,17 +139,20 @@ public class CustomerController {
         customerService.withdraw(customerId, amount);
     }
 
-    // Perform account transfer
+    // Perform account transfer - tested -> working properly
     @PostMapping("/transfer")
     public void transfer(@RequestParam Long receiverCustomerId, @RequestParam Double amount) {
         // Assume customer is logged in and their ID is retrieved from authentication
         Long senderCustomerId = 1L; // Example customer ID, replace with actual logged-in customer ID
         customerService.transfer(senderCustomerId, receiverCustomerId, amount);
     }
+    
+    // DONE TILL HERE
 
+    // LAST API - NOT WORKING
     // Endpoint for viewing transaction history
     @GetMapping("/transactionHistory")
-    public List<TransactionDTO> getTransactionHistory() {
+    public List<Transaction> getTransactionHistory() {
         // Assume customer is logged in and their ID is retrieved from authentication
         Long customerId = 1L; // Example customer ID, replace with actual logged-in customer ID
         return customerService.getTransactionHistory(customerId);

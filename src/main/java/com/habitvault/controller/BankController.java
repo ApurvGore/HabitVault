@@ -32,6 +32,7 @@ public class BankController {
     public List<Customer> getAllBankCustomers() {
         return bankService.getAllBankCustomers();
     }
+    
 
     // Endpoint for managing bank accounts
     // Get all bank accounts  - tested -> working properly
@@ -39,6 +40,8 @@ public class BankController {
     public List<Account> getAllBankAccounts() {
         return bankService.getAllBankAccounts();
     }
+    
+
 
     // Endpoints for performing bank transactions
     // Perform bank deposit - tested -> working properly
@@ -47,6 +50,8 @@ public class BankController {
         bankService.deposit(customerId, amount);
         return ResponseEntity.status(HttpStatus.OK).body("Amount deposited successfully");
     }
+    
+
 
     // Perform bank withdrawal - tested -> working properly
     @PostMapping("/withdraw")
@@ -54,6 +59,8 @@ public class BankController {
         bankService.withdraw(customerId, amount);
         return ResponseEntity.status(HttpStatus.OK).body("Amount withdrawn successfully");
     }
+    
+
 
     // Perform bank transfer - tested -> working properly
     @PostMapping("/transfer")
@@ -61,13 +68,18 @@ public class BankController {
         bankService.transfer(senderCustomerId, receiverCustomerId, amount);
         return ResponseEntity.status(HttpStatus.OK).body("Amount transferred successfully");
     }
+    
+
 
     // Endpoints for viewing transaction history
-    // Get transaction history for a customer
+    // Get transaction history for a customer - tested -> working properly
     @GetMapping("/transactionHistory/{customerId}")
     public List<Transaction> getTransactionHistory(@PathVariable Long customerId) {
         return bankService.getTransactionHistory(customerId);
     }
+    
+    //DONE TILL HERE
+
 
     // Endpoint for downloading bank statements
 //    @GetMapping("/bankStatements/{customerId}")
